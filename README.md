@@ -14,6 +14,6 @@ Apache Maven 3.3.9
 JUnit 4.12
 
 
-Travis
+Status
 ------
-[![Build Status](https://travis-ci.org/kaczynskij/payment-system.svg?branch=master)](https://travis-ci.org/kaczynskij/payment-system.svg?branch=master)
+[![Build Status](https://travis-ci.org/kaczynskij/payment-system.svg?branch=master)](https://travis-ci.org/kaczynskij/payment-system)[![Coverage Status](https://coveralls.io/repos/github/kaczynskij/payment-system/badge.svg?branch=master)](https://coveralls.io/github/kaczynskij/payment-system?branch=master)
