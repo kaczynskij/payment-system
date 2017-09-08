@@ -10,6 +10,7 @@
 
 	<properties>
 		<junit-version>4.12</junit-version>
+		<maven.jacoco.plugin.version>0.7.2.201409121644</maven.jacoco.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -31,7 +32,6 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.5</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -47,17 +47,10 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.6.201602180812</version>
-				<executions>
-					<execution>
-						<id>prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-				</executions>
+				<version>${maven.jacoco.plugin.version}</version>
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
