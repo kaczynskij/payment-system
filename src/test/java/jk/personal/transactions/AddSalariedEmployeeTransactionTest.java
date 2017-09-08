@@ -18,7 +18,7 @@ public class AddSalariedEmployeeTransactionTest {
   PayrollDatabase database = PayrollDatabase.globalPayrollDatabase;
 
   @After
-  public void after() {
+  public void tearDown() {
     database.clear();
   }
 
@@ -44,6 +44,40 @@ public class AddSalariedEmployeeTransactionTest {
     HoldMethod hm = (HoldMethod) pm;
     assertNotNull(hm);
 
+  }
+
+  @Test
+  public void testAddMultipleSalariedEmployees() {
+    int empId = 1;
+    int empId2 = 2;
+
+    Transaction t = new AddSalariedEmployeeTransaction(empId, "Bob", "Home", 2500.00);
+    t.execute();
+
+    Transaction t2 = new AddSalariedEmployeeTransaction(empId2, "Mary", "Mars", 1000.00);
+    t2.execute();
+
+    validateSalariedEmployee(empId, "Bob", 2500.00);
+    validateSalariedEmployee(empId2, "Mary", 1000.00);
+
+  }
+
+  private void validateSalariedEmployee(int empId, String expectedName, double expectedSalary) {
+    Employee e = database.getEmployee(empId);
+    assertEquals(expectedName, e.getName());
+
+    PaymentClassification pc = e.getClassification();
+    SalariedClassification sc = (SalariedClassification) pc;
+    assertNotNull(sc);
+
+    assertEquals(expectedSalary, sc.getSalary());
+    PaymentSchedule ps = e.getSchedule();
+    MonthlySchedule ms = (MonthlySchedule) ps;
+    assertNotNull(ms);
+
+    PaymentMethod pm = e.getMethod();
+    HoldMethod hm = (HoldMethod) pm;
+    assertNotNull(hm);
   }
 
 }
